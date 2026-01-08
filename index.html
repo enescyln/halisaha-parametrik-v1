@@ -1,51 +1,45 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Parametrik Futbol Ligi</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
    body {
      font-family: 'Inter', sans-serif;
      background-color: #f3f4f6;
-     -webkit-tap-highlight-color: transparent;
    }
    @keyframes scaleIn {
      from { opacity: 0; transform: scale(0.9); }
      to { opacity: 1; transform: scale(1); }
    }
    .animate-scaleIn {
-     animation: scaleIn 0.2s ease-out forwards;
+     animation: scaleIn 0.3s ease-out forwards;
    }
 </style>
-<script type="importmap">
- {
-   "imports": {
-     "react": "https://esm.sh/react@19.2.3",
-     "react-dom": "https://esm.sh/react-dom@19.2.3"
-   }
- }
-</script>
+<!-- React ve ReactDOM'u CDN'den alıyoruz -->
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 </head>
 <body>
 <div id="root"></div>
-<script type="module">
-   import React from "react";
-   import ReactDOM from "react-dom/client";
+<script>
+   const { createElement } = React;
+   const { createRoot } = ReactDOM;
    function App() {
-     return (
-<div className="p-6 text-center animate-scaleIn">
-<h1 className="text-3xl font-bold text-blue-600">Parametrik Futbol Ligi ⚽</h1>
-<p className="mt-4 text-gray-700">Sayfa başarıyla çalışıyor 🎉</p>
-</div>
+     return createElement(
+       "div",
+       { className: "p-6 text-center animate-scaleIn" },
+       createElement("h1", { className: "text-3xl font-bold text-blue-600" }, "Parametrik Futbol Ligi ⚽"),
+       createElement("p", { className: "mt-4 text-gray-700" }, "Sayfa başarıyla çalışıyor 🎉")
      );
    }
-   const root = ReactDOM.createRoot(document.getElementById("root"));
-   root.render(<App />);
+   const root = createRoot(document.getElementById("root"));
+   root.render(createElement(App));
 </script>
 </body>
 </html>
